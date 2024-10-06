@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: WindowConfig
   m_EditorClassIdentifier: 
   windowDataList:
-  - name: HallWindow
-    path: Assets/GameData/Hall/Prefabs/Window/HallWindow
-  - name: LoginWindow
-    path: Assets/GameData/Hall/Prefabs/Window/LoginWindow
+  - name: CreateRoleWindow
+    path: Window/CreateRoleWindow
