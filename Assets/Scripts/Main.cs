@@ -20,6 +20,14 @@ public class Main : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    /// <summary>
+    /// 资源解压完成后调用
+    /// </summary>
+    public void StartGame()
+    {
+
+    }
+
     public void AsyncLoadScene()
     {
         UIModule.Instance.PopUpWindow<LoadingWindow>();
