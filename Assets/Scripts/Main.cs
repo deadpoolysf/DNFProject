@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ZMGC.Battle;
+using ZMGC.Hall;
 
 public class Main : MonoBehaviour
 {
@@ -12,8 +14,8 @@ public class Main : MonoBehaviour
         Instance = this;
         //初始化UI框架
         UIModule.Instance.Initialize();
-
-        UIModule.Instance.PopUpWindow<CreateRoleWindow>();
+        //构建大厅世界
+        WorldManager.CreateWorld<HallWorld>();
 
         DontDestroyOnLoad(gameObject);
     }
@@ -60,6 +62,9 @@ public class Main : MonoBehaviour
         
         //销毁所有窗口
         UIModule.Instance.DestroyAllWindow();
+        //构建战斗世界
+        WorldManager.CreateWorld<BattleWorld>();
+        Debug.Log("UserName:"+HallWorld.GetExitsDataMgr<UserDataMgr>().userName);
     }
 
     // Update is called once per frame

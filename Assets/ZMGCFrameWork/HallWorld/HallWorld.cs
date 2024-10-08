@@ -18,12 +18,14 @@ namespace ZMGC.Hall
             base.OnCretae();
             Debug.Log("HallWorld  OnCretae>>>");
             //大厅世界构建完//ndow<LoginWindow>();
+            //弹出选择角色弹窗
+            UIModule.Instance.PopUpWindow<CreateRoleWindow>();
         }
         /// <summary>
         /// 从登录页进入大厅
         /// </summary>
         public static void EnterHallWorldFormLogin()
-        { 
+        {
             //退出游戏流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
             HallWorld.UIModule.DestroyAllWindow();
             //ZMAssetsFrame.ClearResourcesAssets(false);
@@ -36,7 +38,7 @@ namespace ZMGC.Hall
         /// 从游戏内返回至大厅  初始化一些大厅数据和状态
         /// </summary>
         /// <param name="args">游戏退出携带的一些相关参数，如:是否在来一局，跳转至某界面</param>
-        public static void EnterHallWorldFormGame(object args=null)
+        public static void EnterHallWorldFormGame(object args = null)
         {
             //退出游戏流程：销毁所有弹窗，解除资源引用 =>  释放内存中无引用的资源 
             HallWorld.UIModule.DestroyAllWindow();
