@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZM.AssetFrameWork;
 
 namespace ZMGC.Battle
 {
@@ -10,6 +11,8 @@ namespace ZMGC.Battle
         {
             base.OnCretae();
             Debug.Log("BattleWorld OnCretae");
+            //´´½¨Ó¢ÐÛ
+            ZMAssetsFrame.Instantiate(AssetPathConfig.GAME_PREFABS_HERO + "1000", null);
         }
 
         public override void OnDestroy()

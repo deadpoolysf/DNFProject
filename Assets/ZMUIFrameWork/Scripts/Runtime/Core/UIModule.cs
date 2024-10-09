@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZM.AssetFrameWork;
 //using ZM.AssetFrameWork;
 
 public class UIModule
@@ -217,9 +218,8 @@ public class UIModule
             SetWidnowMaskVisible();
             window.OnHide();
             window.OnDestroy();
-            //ZMAssetsFrame.Release(window.gameObject,true);
-            //TODO:ZMAssetsFrame未导入
-            GameObject.Destroy(window.gameObject);
+            ZMAssetsFrame.Release(window.gameObject,true);
+            //GameObject.Destroy(window.gameObject);
             //在出栈的情况下，上一个界面销毁时，自动打开栈种的下一个界面
             PopNextStackWindow(window);
         }
@@ -286,9 +286,8 @@ public class UIModule
 
     public GameObject LoadWindow(string wndName)
     {
-        //TODO:ZMAssetsFrame未导入
-        GameObject window = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(mWindowConfig.GetWindowPath(wndName)), mUIRoot);
-        //GameObject window = ZMAssetsFrame.Instantiate(mWindowConfig.GetWindowPath(wndName),mUIRoot);
+        //GameObject window = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>(mWindowConfig.GetWindowPath(wndName)), mUIRoot);
+        GameObject window = ZMAssetsFrame.Instantiate(mWindowConfig.GetWindowPath(wndName),mUIRoot);
         //window.transform.SetParent(mUIRoot);
         window.transform.localScale = Vector3.one;
         window.transform.localPosition = Vector3.zero;

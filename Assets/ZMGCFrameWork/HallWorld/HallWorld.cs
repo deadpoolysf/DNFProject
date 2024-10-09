@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZMGC.Battle;
 //using ZM.AssetFrameWork;
 
 namespace ZMGC.Hall
@@ -33,7 +34,6 @@ namespace ZMGC.Hall
             //UIModule.PopUpWindow<HallWindow>();
         }
 
-
         /// <summary>
         /// 从游戏内返回至大厅  初始化一些大厅数据和状态
         /// </summary>
@@ -46,6 +46,21 @@ namespace ZMGC.Hall
 
             //弹出大厅弹窗
             //HallWorld.UIModule.PopUpWindow<HallWindow>();
+        }
+
+        /// <summary>
+        /// 进入战斗世界
+        /// </summary>
+        public static void EnterBattleWorld()
+        {
+            LoadSceneManager.Instance.AsyncLoadScene("Battle", () =>
+            {
+                //销毁所有窗口
+                UIModule.Instance.DestroyAllWindow();
+                //构建战斗世界
+                WorldManager.CreateWorld<BattleWorld>();
+                Debug.Log("UserName:" + HallWorld.GetExitsDataMgr<UserDataMgr>().userName);
+            });
         }
 
         public override void OnDestroy()

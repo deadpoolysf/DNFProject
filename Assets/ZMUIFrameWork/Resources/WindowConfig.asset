@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e33d3891a34cfa847af5f5f9cacd41d0, type: 3}
   m_Name: WindowConfig
   m_EditorClassIdentifier: 
-  windowDataList:
-  - name: CreateRoleWindow
-    path: Window/CreateRoleWindow
+  windowDataList: []

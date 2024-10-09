@@ -10,56 +10,56 @@ using UnityEngine;
 using ZMUIFrameWork;
 using ZMGC.Hall;
 
-public class CreateRoleWindow:WindowBase
+public class CreateRoleWindow : WindowBase
 {
-	
-	public CreateRoleWindowDataComponent dataCompt;
-	
-	#region 声明周期函数
-	//调用机制与Mono Awake一致
-	public override void OnAwake()
-	{
-		dataCompt=gameObject.GetComponent<CreateRoleWindowDataComponent>();
-		dataCompt.InitComponent(this);
-		base.OnAwake();
-	}
-	//物体显示时执行
-	public override void OnShow()
-	{
-		base.OnShow();
-		Debug.Log("CreateRoleWindow OnShow");
-	}
-	//物体隐藏时执行
-	public override void OnHide()
-	{
-		base.OnHide();
-	}
-	//物体销毁时执行
-	public override void OnDestroy()
-	{
-		base.OnDestroy();
-	}
-	#endregion
-	#region API Function
-		    
-	#endregion
-	#region UI组件事件
-	public void OnCloseButtonClick()
-	{
-		
-	HideWindow();
-	}
-	public void OnEnterGameButtonClick()
-	{
-		Main.Instance.AsyncLoadScene();
-	}
-	public void OnNameInputChange(string text)
-	{
-		
-	}
-	public void OnNameInputEnd(string text)
-	{
-		HallWorld.GetExitsDataMgr<UserDataMgr>().userName = text;
-	}
-	#endregion
+
+    public CreateRoleWindowDataComponent dataCompt;
+
+    #region 声明周期函数
+    //调用机制与Mono Awake一致
+    public override void OnAwake()
+    {
+        dataCompt = gameObject.GetComponent<CreateRoleWindowDataComponent>();
+        dataCompt.InitComponent(this);
+        base.OnAwake();
+    }
+    //物体显示时执行
+    public override void OnShow()
+    {
+        base.OnShow();
+        Debug.Log("CreateRoleWindow OnShow");
+    }
+    //物体隐藏时执行
+    public override void OnHide()
+    {
+        base.OnHide();
+    }
+    //物体销毁时执行
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+    }
+    #endregion
+    #region API Function
+
+    #endregion
+    #region UI组件事件
+    public void OnCloseButtonClick()
+    {
+
+        HideWindow();
+    }
+    public void OnEnterGameButtonClick()
+    {
+        HallWorld.EnterBattleWorld();
+    }
+    public void OnNameInputChange(string text)
+    {
+
+    }
+    public void OnNameInputEnd(string text)
+    {
+        HallWorld.GetExitsDataMgr<UserDataMgr>().userName = text;
+    }
+    #endregion
 }
