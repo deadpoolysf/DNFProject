@@ -126,7 +126,7 @@ public class SkillCharacterConfig
         mIsPlayAnim = false;
     }
 
-    //动画进度改变监听
+    //动画进度改变监听(手动拖拽)
     public void OnAnimProgressValueChange(float value)
     {
         //根据当前动画进度进行动画采样
