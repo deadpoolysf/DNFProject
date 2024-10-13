@@ -75,6 +75,9 @@ public class SkillCharacterConfig
 
             mLastRunTime = 0;
             mIsPlayAnim = true;
+
+            SkillCompilerWindow window = SkillCompilerWindow.GetWindow();
+            window?.StartPlaySkill();
         }
     }
     [ButtonGroup("按钮数组")]
@@ -82,6 +85,8 @@ public class SkillCharacterConfig
     public void Pause()
     {
         mIsPlayAnim = false;
+        SkillCompilerWindow window = SkillCompilerWindow.GetWindow();
+        window?.SkillPause();
     }
     [GUIColor(0, 1, 0)]
     [ButtonGroup("按钮数组")]
@@ -124,6 +129,8 @@ public class SkillCharacterConfig
     public void PlaySkillEnd()
     {
         mIsPlayAnim = false;
+        SkillCompilerWindow window = SkillCompilerWindow.GetWindow();
+        window?.PlaySkillEnd();
     }
 
     //动画进度改变监听(手动拖拽)

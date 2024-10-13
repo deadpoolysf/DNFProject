@@ -27,6 +27,76 @@ public class SkillEffectConfig
 
     [ToggleGroup("isSetTransParent", "节点类型")]
     public TransParentType transParentType;    //父节点类型
+
+#if UNITY_EDITOR
+
+    //编辑器模式下创建的特效
+    private GameObject mCloneEffect;
+    //当前逻辑帧
+    private int mCurLogicFrame = 0;
+    /// <summary>
+    /// 开始播放技能
+    /// </summary>
+    public void StartPlaySkill()
+    {
+        DestroyEffect();
+        mCurLogicFrame = 0;
+    }
+
+    public void SkillPause()
+    {
+        DestroyEffect();
+    }
+
+    /// <summary>
+    /// 播放技能结束
+    /// </summary>
+    public void PlaySkillEnd()
+    {
+        DestroyEffect();
+    }
+
+    /// <summary>
+    /// 逻辑帧更新
+    /// </summary>
+    public void OnLogicFrameUpdate()
+    {
+        if(mCurLogicFrame == triggerFrame)  //当前逻辑帧等于触发帧，创建特效
+        {
+            CreateEffect();
+        }
+        else if(mCurLogicFrame == endFrame)  //当前逻辑帧等于结束帧，销毁特效
+        {
+            DestroyEffect();
+        }
+        mCurLogicFrame++;
+    }
+
+    /// <summary>
+    /// 创建特效
+    /// </summary>
+    public void CreateEffect()
+    {
+        if (skillEffect != null)
+        {
+            mCloneEffect = GameObject.Instantiate(skillEffect);
+            mCloneEffect.transform.position = SkillCompilerWindow.GetCharacterPos();
+        }
+
+    }
+
+    /// <summary>
+    /// 销毁特效
+    /// </summary>
+    public void DestroyEffect()
+    {
+        if (mCloneEffect != null)
+        {
+            GameObject.DestroyImmediate(mCloneEffect);
+        }
+    }
+
+#endif
 }
 
 public enum TransParentType

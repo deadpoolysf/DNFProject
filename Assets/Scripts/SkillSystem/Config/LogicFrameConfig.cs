@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class LogicFrameConfig
 {
-    //逻辑帧id 自增
+    /// <summary>
+    /// 逻辑帧id 自增
+    /// </summary>
     public static long LogicFrameId;
-    //实际逻辑帧间隔
+    /// <summary>
+    /// 实际逻辑帧间隔
+    /// </summary>
     public static float LogicFrameInterval = 0.066f; //1秒15帧
-    //毫秒级逻辑帧间隔，用来计算当前逻辑帧累加时间
+    /// <summary>
+    /// 毫秒级逻辑帧间隔，用来计算当前逻辑帧累加时间
+    /// </summary>
     public static float LogicFrameIntervalms = 66f; //1秒15帧
 }
