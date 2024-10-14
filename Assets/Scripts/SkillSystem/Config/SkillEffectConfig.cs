@@ -34,6 +34,10 @@ public class SkillEffectConfig
     private GameObject mCloneEffect;
     //当前逻辑帧
     private int mCurLogicFrame = 0;
+    //特效动画播放代理
+    private AnimationAgent mAnimAgent;
+    //特效粒子播放代理
+    private ParticlesAgent mParticlesAgent;
     /// <summary>
     /// 开始播放技能
     /// </summary>
@@ -81,6 +85,11 @@ public class SkillEffectConfig
         {
             mCloneEffect = GameObject.Instantiate(skillEffect);
             mCloneEffect.transform.position = SkillCompilerWindow.GetCharacterPos();
+            //在Editor模式下，动画文件和粒子特效都不会播放，需要通过代码进行播放
+            mAnimAgent = new AnimationAgent();
+            mParticlesAgent = new ParticlesAgent();
+            mAnimAgent.InitPlayAnim(mCloneEffect.transform);
+            mParticlesAgent.InitPlayAnim(mCloneEffect.transform);
         }
 
     }
@@ -93,6 +102,14 @@ public class SkillEffectConfig
         if (mCloneEffect != null)
         {
             GameObject.DestroyImmediate(mCloneEffect);
+        }
+        if(mAnimAgent != null)
+        {
+            mAnimAgent.OnDestroy();
+        }
+        if (mParticlesAgent != null)
+        {
+            mParticlesAgent.OnDestroy();
         }
     }
 
