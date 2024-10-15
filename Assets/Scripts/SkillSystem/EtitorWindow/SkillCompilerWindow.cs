@@ -13,6 +13,9 @@ public class SkillCompilerWindow : OdinEditorWindow
     [TabGroup("SkillCompiler", "Skill", SdfIconType.Robot, TextColor = "lightmagenta")]
     public SkillConfig skill = new SkillConfig();
 
+    [TabGroup("SkillCompiler", "Damage", SdfIconType.Dash, TextColor = "blue")]
+    public List<SkillDamageConfig> damageList = new List<SkillDamageConfig>();
+
     [TabGroup("SkillCompiler", "Effect", SdfIconType.OpticalAudio, TextColor = "blue")]
     public List<SkillEffectConfig> effctList = new List<SkillEffectConfig>();
 
@@ -51,12 +54,20 @@ public class SkillCompilerWindow : OdinEditorWindow
     protected override void OnEnable()
     {
         base.OnEnable();
+        foreach (var item in damageList)
+        {
+            item.OnInit();
+        }
         EditorApplication.update += OnEditorUpdate;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
+        foreach (var item in damageList)
+        {
+            item.OnRelease();
+        }
         EditorApplication.update -= OnEditorUpdate;
     }
 
@@ -68,6 +79,10 @@ public class SkillCompilerWindow : OdinEditorWindow
         foreach (var item in effctList)
         {
             item.StartPlaySkill();
+        }
+        foreach (var item in damageList)
+        {
+            item.PlaySkillStart();
         }
         isStartPlaySkill = true;
 
@@ -91,6 +106,10 @@ public class SkillCompilerWindow : OdinEditorWindow
     public void PlaySkillEnd()
     {
         foreach (var item in effctList)
+        {
+            item.PlaySkillEnd();
+        }
+        foreach (var item in damageList)
         {
             item.PlaySkillEnd();
         }
@@ -157,6 +176,10 @@ public class SkillCompilerWindow : OdinEditorWindow
     public void OnLogicFrameUpdate()
     {
         foreach (var item in effctList)
+        {
+            item.OnLogicFrameUpdate();
+        }
+        foreach (var item in damageList)
         {
             item.OnLogicFrameUpdate();
         }
