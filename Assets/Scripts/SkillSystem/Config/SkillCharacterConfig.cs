@@ -93,7 +93,8 @@ public class SkillCharacterConfig
     [Button("±£¥Ê≈‰÷√", ButtonSizes.Large)]
     public void SaveAssets()
     {
-
+        SkillCompilerWindow window = SkillCompilerWindow.GetWindow();
+        window?.SaveSkillData();
     }
 
     public void OnUpdate(System.Action progressUpdateCallback)

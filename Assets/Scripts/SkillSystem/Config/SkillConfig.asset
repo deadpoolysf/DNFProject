@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8d87f104cb72d84480ca3e9aae27f41, type: 3}
+  m_Name: SkillConfig
+  m_EditorClassIdentifier: 
+  character:
+    skillCharacter: {fileID: 0}
+    skillAnim: {fileID: 0}
+    animProgress: 0
+    isLoopAnim: 0
+    animLoopCount: 1
+    logicFrame: 0
+    animLength: 0
+    skillDuration: 0
+  skillCfg:
+    showStockPileData: 0
+    showPosGuideData: 0
+    skillIcon: {fileID: 0}
+    skillId: 0
+    skillName: 
+    needSPValue: 0
+    skillShakeBeforeTimeMs: 0
+    skillAttackDurationMs: 0
+    skillShakeAfterMs: 0
+    skillCDTimes: 0
+    skillType: 0
+    sockPileData: []
+    skillGuideObj: {fileID: 0}
+    skillGuideRange: 0
+    CombinationSkillId: 0
+    skillHitEffect: {fileID: 0}
+    hitEffectSurvivalTimeMs: 0
+    skillHitAudio: {fileID: 0}
+    showSkillProject: 0
+    skillProjectObj: {fileID: 0}
+    skillDes: 
+  damageCfgList: []
+  effctCfgList: []
