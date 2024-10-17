@@ -26,7 +26,7 @@ MonoBehaviour:
     showPosGuideData: 0
     skillIcon: {fileID: 0}
     skillId: 1001
-    skillName: 
+    skillName: "\u666E\u653B1"
     needSPValue: 0
     skillShakeBeforeTimeMs: 0
     skillAttackDurationMs: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
     skillProjectObj: {fileID: 0}
     skillDes: 
   damageCfgList:
-  - triggerFrame: 4
-    endFrame: 8
+  - triggerFrame: 2
+    endFrame: 5
     triggerIntervalMs: 0
     isFollowEffect: 0
     damageType: 0

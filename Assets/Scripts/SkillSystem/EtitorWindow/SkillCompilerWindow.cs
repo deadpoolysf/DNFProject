@@ -30,10 +30,24 @@ public class SkillCompilerWindow : OdinEditorWindow
         //绘制窗口
         return GetWindowWithRect<SkillCompilerWindow>(new Rect(0, 0, 800, 500));
     }
-
+    /// <summary>
+    /// 保存技能配置
+    /// </summary>
     public void SaveSkillData()
     {
         SkillDataConfig.SaveSkillData(character, skill, damageList, effctList);
+        Close();
+    }
+
+    /// <summary>
+    /// 读取技能配置
+    /// </summary>
+    public void LoadSkillData(SkillDataConfig skillData)
+    {
+        this.character = skillData.character;
+        this.skill = skillData.skillCfg;
+        this.damageList = skillData.damageCfgList;
+        this.effctList = skillData.effctCfgList;
     }
 
     public static SkillCompilerWindow GetWindow()

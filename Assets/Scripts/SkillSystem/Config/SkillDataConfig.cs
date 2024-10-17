@@ -1,6 +1,9 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 [CreateAssetMenu(fileName = "SkillConfig", menuName = "SkillConfig", order = 0)]
 public class SkillDataConfig : ScriptableObject
@@ -13,6 +16,8 @@ public class SkillDataConfig : ScriptableObject
     public List<SkillDamageConfig> damageCfgList;
     //技能特效配置列表
     public List<SkillEffectConfig> effctCfgList;
+
+#if UNITY_EDITOR
 
     public static void SaveSkillData(SkillCharacterConfig character, SkillConfig skillCfg, List<SkillDamageConfig> damageCfgList, List<SkillEffectConfig> effctCfgList)
     {
@@ -27,4 +32,12 @@ public class SkillDataConfig : ScriptableObject
         AssetDatabase.DeleteAsset(assetPath);
         AssetDatabase.CreateAsset(skillDataConfig, assetPath);
     }
+
+    [Button("配置技能",ButtonSizes.Large), GUIColor("green")]
+    public void ShowSkillWindowButtonClick()
+    {
+        SkillCompilerWindow window = SkillCompilerWindow.ShowWindow();
+        window.LoadSkillData(this);
+    }
+#endif
 }
