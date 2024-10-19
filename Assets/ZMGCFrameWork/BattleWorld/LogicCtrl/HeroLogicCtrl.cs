@@ -7,12 +7,13 @@
 * 注意:以下文件为自动生成，强制再次生成将会覆盖
 ----------------------------------------------------------------------------------------*/
 using ZM.AssetFrameWork;
+using UnityEngine;
 
 namespace ZMGC.Battle
 {
     public class HeroLogicCtrl : ILogicBehaviour
     {
-
+        public HeroLogic HeroLogic { get; private set; } 
         public void OnCreate()
         {
 
@@ -24,7 +25,18 @@ namespace ZMGC.Battle
         public void InitHero()
         {
             //创建英雄
-            ZMAssetsFrame.Instantiate(AssetPathConfig.GAME_PREFABS_HERO + "1000", null);
+            GameObject heroObj =  ZMAssetsFrame.Instantiate(AssetPathConfig.GAME_PREFABS_HERO + "1000", null);
+            //获取英雄渲染层
+            HeroRender heroRender =  heroObj.GetComponent<HeroRender>();
+            //获取英雄逻辑层
+            HeroLogic heroLogic = new HeroLogic(1000,heroRender);
+            HeroLogic = heroLogic;
+            //设置逻辑对象
+            heroRender.SetLogicObject(heroLogic);
+
+            //初始化英雄逻辑层和渲染层
+            heroRender.OnCreate();
+            heroLogic.OnCreate();
         }
 
         public void OnDestroy()

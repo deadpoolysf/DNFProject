@@ -19,6 +19,7 @@ public class CreateRoleWindow : WindowBase
     //调用机制与Mono Awake一致
     public override void OnAwake()
     {
+        mDisableAnim = true;
         dataCompt = gameObject.GetComponent<CreateRoleWindowDataComponent>();
         dataCompt.InitComponent(this);
         base.OnAwake();
