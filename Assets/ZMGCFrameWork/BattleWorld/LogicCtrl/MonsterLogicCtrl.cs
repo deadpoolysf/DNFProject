@@ -59,6 +59,15 @@ namespace ZMGC.Battle
             }
         }
 
+        public void OnLogicFrameUpdate()
+        {
+            for (int i = monsterList.Count-1; i >=0 ; i--)
+            {
+                monsterList[i].OnLogicFrameUpdate();
+            }
+        }
+
+
         public void OnDestroy()
         {
 

@@ -12,7 +12,11 @@ public class RenderObject : MonoBehaviour
     /// <summary>
     /// 位置插值速度
     /// </summary>
-    protected float mSmoothPosSpeed;
+    protected float mSmoothPosSpeed=10;
+    /// <summary>
+    /// 角色转向
+    /// </summary>
+    protected Vector2 mRenderDir;
 
     /// <summary>
     /// 设置逻辑对象
@@ -44,7 +48,7 @@ public class RenderObject : MonoBehaviour
     /// <summary>
     /// Unity渲染帧（30、60、120帧可设置）
     /// </summary>
-    void Update()
+    public virtual void Update()
     {
         UpdatePosition();
         UpdateDir();
@@ -65,6 +69,9 @@ public class RenderObject : MonoBehaviour
     public void UpdateDir()
     {
         //更新逻辑朝向
-        transform.rotation = Quaternion.Euler(LogicObject.LogicDir.ToVector3());
+        //transform.rotation = Quaternion.Euler(LogicObject.LogicDir.ToVector3());
+        mRenderDir.x = LogicObject.LogicXAxis >= 0 ? 0 : -20;
+        mRenderDir.y = LogicObject.LogicXAxis >= 0 ? 0 : 180;
+        transform.localEulerAngles = mRenderDir;
     }
 }

@@ -74,6 +74,14 @@ public class WorldManager
         return null;
     }
 
+    public static void OnUpdate()
+    {
+        foreach (var item in mWorldList)
+        {
+            item.OnUpdate();
+        }
+    }
+
     /// <summary>
     /// 销毁指定游戏世界
     /// </summary>
